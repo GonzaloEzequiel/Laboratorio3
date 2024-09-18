@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="mi_form">
+        <label for="txt_nombre">Nombre:</label>
+        <input type="text" id="txt_nombre" name="nombre" placeholder="Ingrese su nombre" required><br>
+        <label for="txt_apellido">Apelido:</label>
+        <input type="test" id="txt_apellido" name="apellido" placeholder="Ingrese su apellido" required><br>
+        <label for="sel_tiene_auto">Tiene Auto?:</label>
+        <select id="sel_tiene_auto" name="tiene_auto">
+            <option value="1">SI</option>
+            <option value="0">NO</option>
+        </select><br>
+        <label for="chk_es_alumno">Es Alumno?</label>
+        <input type="checkbox" id="chk_es_alumno" name="es_alumno" value="1" checked><br>
+        <label>Seleccionar Género:</label><br>
+        <label for="gen_masculino">Masculino</label>
+        <input type="radio" id="gen_masculino" name="genero" value="masculino" checked><br>
+        <label for="gen_femenino">Femenino</label>
+        <input type="radio" id="gen_femenino" name="genero" value="femenino"><br>
+        <label for="gen_otro">Otro</label>
+        <input type="radio" id="gen_otro" name="genero" value="otro"><br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>APELLIDO</th>
+                    <th>NOMBRE</th>
+                </tr>
+            </thead>
+            <tbody id="personas">
+                <tr key="1">
+                    <td>33111296</td>
+                    <td>Pérez</td>
+                    <td>Gonzalo Ezequiel</td>
+                </tr>
+                <tr key="2">
+                    <td>37141279</td>
+                    <td>Yñiguez</td>
+                    <td>Florencia Agustina</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" value="Mi super Envío">
+    </form>
+</body>
+<script>
+    var o = "{'nombre':'gonzalo', 'apellido':'perez', 'tiene_auto':'1', 'es_alumno':true}"
+</script>
+</html>

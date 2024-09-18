@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    class Persona {
+        nombre;
+        apellido;
+        #edad;
+
+        constructor(c_nomnbre, c_apellido, c_edad) {
+            this.nombre = c_nomnbre;
+            this.apellido = c_apellido;
+            this.#edad = c_edad;
+        }
+    }
+
+    class Ciudadano extends Persona {
+        dni;
+
+        constructor(c_nomnbre, c_apellido, c_edad, c_dni) {
+            super(c_nomnbre, c_apellido, c_edad);
+            this.dni = c_dni;
+        }
+    }
+
+    c1 = new Ciudadano('Gonzalo', 'Pérez', 37, 33111296);
+    p1 = new Persona('Florencia', 'Yñiguez', 31, 37819141);
+
+    console.log(c1 instanceof Persona);
+    console.log(c1);
+    console.log(p1 instanceof Ciudadano);
+    console.log(JSON.stringify(p1));
+
+    object1 = JSON.parse('[{"nombre":"Juan","apellido":"ramos"},{"nombre":"Mirtha","apellido":"Legrand"}]');
+    console.log(object1);
+    console.log(object1[0]);
+    console.log(object1[0].nombre);
+
+</script>
+<body>
+    
+</body>
+</html>

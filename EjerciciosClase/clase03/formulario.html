@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            width: 100vw;
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+            background-color: aquamarine;
+        }
+
+        #vertical{
+            width: 100%;
+            height: 100%;
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #horizontal {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #cuadrado1 {
+            width: 25%;
+            height: 25%;
+            background-color: black;
+        }
+
+        #cuadrado2 {
+            width: 25%;
+            height: 25%;
+            background-color: lightseagreen;
+        }
+    </style>
+    <script>
+        function CargarScript(){ 
+            
+            var cuad1 = document.getElementById("cuadrado1");
+            //cuad1.style.backgroundColor = "green";
+            cuad1.setAttribute("name", "cuadradoNegro");
+            //cuad1.parentElement.removeChild(cuad1);
+
+            var boton = document.createElement("button");
+            boton.appendChild(document.createTextNode("Mi nuevo boton"));
+            boton.setAttribute("id", "btnNuevo");
+            cuad1.appendChild(boton);        
+
+            var btnNegro = document.getElementById("cuadrado1");
+            var btnCeleste = document.getElementById("cuadrado2");
+
+            //tradicional
+            function ocultarNegro() {
+                var cuadradoNegro = event.target.parentElement;
+                cuadradoNegro.style.display = "none";
+                var cuadradoCeleste = document.getElementById("cuadrado2");
+                cuadradoCeleste.style.display = "block";
+            }
+
+            btnNegro.addEventListener("click", ocultarNegro);
+
+            //closure
+            btnCeleste.addEventListener("click", (event) => {
+                btnCeleste.style.display = "none";
+                btnNegro.style.display = "block";
+            });
+        }
+
+        window.addEventListener("load", CargarScript);
+    </script>
+</head>
+<body>
+    <div id="vertical">
+        <div id="horizontal">
+            <div id="cuadrado1">
+                <button id="btnNegro">Ocultar Negro</button>
+            </div>
+            <div id="cuadrado2">
+                <button id="btnCeleste">Ocultar Celeste</button>
+            </div>
+        </div>
+    </div>    
+</body>    
+</html>

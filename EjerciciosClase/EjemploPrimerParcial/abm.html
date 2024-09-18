@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="abm.js"></script>
+    <link rel="stylesheet" href="abm.css">
+    <title>ABM</title>
+</head>
+<body>
+    <h2>Form Datos</h2>
+    <form id="formDatos">
+        <label for="select_tipo" name="label_tipo">Filtrar Por: </label>
+        <select id="sl_tipo" name="select_tipo">
+            <option value="0">Todos</option>
+            <option value="1">Empleados</option>
+            <option value="2">Clientes</option>
+        </select>
+        <br>
+        <label for="texto_edadPromedio">Calcular Edad Promedio</label>
+        <input type="text" id="txt_edadPromedio" mame="texto_edadPromedio">
+        <input type="button" value="Calcular" id="btn_calcular" name="boton_calcular">
+        <br>
+        <label for="checkboxes">Mostrar Columnas:</label>
+        <div id="div_checkboxes" name="checkboxes">
+            <input type="checkbox" class="selectores" id="chk_id">ID
+            <input type="checkbox" class="selectores" id="chk_nombre">Nombre
+            <input type="checkbox" class="selectores" id="chk_apellido">Apellido
+            <input type="checkbox" class="selectores" id="chk__edad">Edad
+            <input type="checkbox" class="selectores" id="chk_sueldo">Sueldo
+            <input type="checkbox" class="selectores" id="chk_ventas">Ventas
+            <input type="checkbox" class="selectores" id="chk_compras">Compras
+            <input type="checkbox" class="selectores" id="chk_telefono">Teléfono
+        </div>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Sueldo</th>
+                <th>Ventas</th>
+                <th>Compras</th>
+                <th>Teléfono</th>
+            </thead>
+            <tbody>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+            </tbody>
+        </table>
+        <input type="button" value="Agregar">
+    </form>
+    <h2>Formulario ABM</h2>
+    <form id="formABM">
+        <label>ID: </label>
+        <input type="text">
+        <br>
+        <label>Atributo1: </label>
+        <input type="text">
+        <br>
+        <label>Atributo2: </label>
+        <input type="text">
+        <br>
+        <label>Tipo: </label>
+        <select>
+            <option value="Tipo1"></option>
+            <option value="Tipo1"></option>
+        </select>
+        <br>
+        <label>Atributo3: </label>
+        <input type="text">
+        <br>
+        <input type="button" value="Aceptar">
+        <input type="button" value="Cancelar">
+    </form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/*
+* {
+    background-color:darkslategray;
+}
+
+#titulo3 {
+    color:beige;
+}
+
+h1.title{
+    color:darkseagreen;
+}
+
+.title {
+    color:red;
+}
+
+h1 {
+    color:chocolate;
+}
+
+a {
+    font-size: xx-large;
+}
+
+a:visited {
+    background-color:aqua;
+}
+
+a:hover {
+    border-color: aliceblue;
+    border-radius: 30;
+}
+
+a:active{
+    font-size: 100;
+}
+*/
+
+h2 {
+    background-color: red;
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+
+    border: 20% solid blue;
+    margin: 40;
+    
+}

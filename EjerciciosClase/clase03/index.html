@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    <script type="module" src="modulo2.js"></script>
+    -->
+    <script src="saludo.js"></script>
+</head>
+<body>
+    <!--    ANTES FUNCIONABA ASÍ
+    <form id="formulario" action="url" mehotd="POST">
+    -->
+    <form id="formulario">
+        <input id="text" type="text" name="txt">
+        <input type="submit">
+    </form>
+</body>
+    <script>
+        let f = document.getElementById("formulario");
+        f.addEventListener("sumibt", (event)=> {
+            event.preventDefault();
+            console.log(document.getElementById("txt").value);
+        });
+    </script>
+</html>
+
