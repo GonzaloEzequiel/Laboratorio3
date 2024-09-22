@@ -19,7 +19,6 @@ function ordernarId() {
 }
 
 
-
 function DibujarTabla(array) {
 
     let a = array.filter((elemento) => {
@@ -77,4 +76,3 @@ function DibujarTabla(array) {
     });
 
 }
-
