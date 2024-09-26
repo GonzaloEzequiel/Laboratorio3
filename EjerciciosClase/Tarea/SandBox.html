@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #banner {
+        background-color: gray;
+        font-style: italic;
+        color:white;
+        padding: 50px;
+    }
+    #lista {
+        visibility: hidden;
+    }
+</style>
+<script>
+    let manipulable = document.getElementById("banner");
+    let botonBackend = document.getElementById("botonFronted");
+
+    botonBackend.addEventListener("click", Agregar);
+
+    function Agregar() {
+
+        nuevoTitulo = manipulable.appendChild(manipulable.createElement("h1", "HOLA MUNDO"));
+        nuevoTitulo.appendChild(nuevoTitulo.createTextNode("HOLA VIEJA"));
+    }
+</script>
+<body>
+    <div id="header">
+        <div id="banner">
+            ESTO ES UN BANNER
+            <ul class="lista"></ul>
+        </div>
+        <div>
+            <button id="botonFrontend">AGREGAR</button>
+        </div>
+    </div>
+</body>
+</html>
