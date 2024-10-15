@@ -12,31 +12,85 @@
         color:white;
         padding: 50px;
     }
-    #lista {
+    .lista {
         visibility: hidden;
     }
 </style>
-<script>
-    let manipulable = document.getElementById("banner");
-    let botonBackend = document.getElementById("botonFronted");
 
-    botonBackend.addEventListener("click", Agregar);
-
-    function Agregar() {
-
-        nuevoTitulo = manipulable.appendChild(manipulable.createElement("h1", "HOLA MUNDO"));
-        nuevoTitulo.appendChild(nuevoTitulo.createTextNode("HOLA VIEJA"));
-    }
-</script>
 <body>
     <div id="header">
         <div id="banner">
-            ESTO ES UN BANNER
-            <ul class="lista"></ul>
+            <h3>ESTO ES UN BANNER</h3>            
+                
+            <h5 id="titulo" class="lista">LISTA DE SALUDOS</h5>
+
+            <ul display="block" id="lista" class="lista">
+                
+            </ul>
         </div>
         <div>
-            <button id="botonFrontend">AGREGAR</button>
+            <button id="botonFrontend">AGREGAR SALUDO</button>
+            <button id="botonFrontend2">BORRAR SALUDOS</button>
         </div>
     </div>
 </body>
+<script>
+
+    var manipulable = document.getElementById("lista");
+    var botonBackend = document.getElementById("botonFrontend");
+    var botonBackend2 = document.getElementById("botonFrontend2");
+    var personas = ["Gonzalo", "Florencia", "Lomito", "Menta", "Tuki", "Hernán", "Victoria", "Alfredo", "Lourdes", "Pablo"];
+
+    botonBackend.addEventListener("click", AgregarLi);
+    botonBackend2.addEventListener("click", BorrarSaludos);
+    
+    /**
+     * Agrega un item de lista con el texto "Hola Mundo"
+     * 
+     */
+    function AgregarLi() {
+
+        MostrarSaludos();
+
+        manipulable.style.visibility = "visible";
+        
+        // 1) creo un elemento
+        let elemento = document.createElement('li');
+
+        // 2) creo un nodo de texto
+        let texto = document.createTextNode('hola'+' '+personas[Math.floor(Math.random() * personas.length)]);
+
+        // 3) vinculo el nodo de texto al elemento creado
+        elemento.appendChild(texto);
+
+        // 4) agrego el par (elemento/nodo texto) al banner
+        manipulable.appendChild(elemento);
+
+          
+    }
+    
+    function BorrarSaludos() {
+
+        OcultarSaludos();
+
+        while(manipulable.hasChildNodes()) {
+
+            manipulable.removeChild(manipulable.lastChild);
+            
+        }        
+    }
+
+
+    function MostrarSaludos() {
+        let tit = document.getElementById("titulo");
+        tit.style.visibility = "visible";
+    }
+
+    function OcultarSaludos() {
+        let tit = document.getElementById("titulo");
+        tit.style.visibility = "hidden";
+    }
+    
+
+</script>
 </html>

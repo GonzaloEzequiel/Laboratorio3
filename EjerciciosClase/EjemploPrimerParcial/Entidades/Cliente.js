@@ -1,13 +1,23 @@
 import Persona from "./Persona.js"
 
-export class Cliente extends Persona {
+class Cliente extends Persona {
 
     compras;
     telefono;
 
     constructor(id, nombre, apellido, edad, compras, telefono) {
-        super(id, nombre, apellido, edad)
-        this.compras = compras;
-        this.telefono = telefono;
+
+        if(
+            (compras !== null && compras > 0) &&
+            telefono !== null
+        ) {
+
+            super(id, nombre, apellido, edad)
+            this.compras = compras;
+            this.telefono = telefono;
+
+        }        
     }
 }
+
+export default Cliente;

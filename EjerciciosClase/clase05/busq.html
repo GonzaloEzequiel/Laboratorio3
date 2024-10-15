@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <input id="txtNombre" type="text"> 
+    <input type="button" value="Buscar" onclick="buscarCarta()"><br>
+       
+</body>
+<script>
+
+
+    function buscarCarta(){
+        let nombre = document.getElementById("txtNombre").value;
+        var xhttp = new XMLHttpRequest(); //Instancio el objeto
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4) {
+                if (xhttp.status==200){
+                    let jsonRespuesta = JSON.parse(xhttp.response);
+                    let carta = document.createElement("img");                  
+                    carta.setAttribute("src",jsonRespuesta.image_uris.small);
+                    document.getElementById("body").appendChild(carta);
+                }else if(xhttp.status==404){
+                    let carta = document.createElement("img");  
+                    carta.setAttribute("src","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0HcG_o9Noq_L087JRPzZxgbtsZtNqH91Fg&s");
+                    document.getElementById("body").appendChild(carta);
+                }
+
+                let p = document.createElement("p").appendChild(document.createTextNode("Texto Despues"));
+                document.getElementById("body").appendChild(p);
+	        }
+        }; 
+        xhttp.open("POST", `https://api.scryfall.com/cards/named?fuzzy=${nombre}`); 
+        xhttp.setRequestHeader('Content-type', 'application/json');
+        xhttp.send(); 
+    }
+
+
+</script>
+
+</html>

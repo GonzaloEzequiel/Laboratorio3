@@ -10,38 +10,41 @@
     console.log(frutas);
     console.log("Mi frutera tiene "+frutas.length+" frutas");
 
-    console.log("Agrego: "+frutas.push("Uva"));  // devuelve el index del valor agregado
+    console.log("Agrego: "+frutas.push("Uva"));  // agrega un elemento al final del array, devuelve el index del valor agregado
     console.log(frutas);
     console.log("Mi frutera tiene "+frutas.length+" frutas");
 
-    console.log("Me como: "+frutas.pop());
+    console.log("Me como: "+frutas.pop()); // elimina el último elemento del array, devuelve el elemento eliminado
     console.log(frutas);
     console.log("Mi frutera tiene "+frutas.length+" frutas");
     
-    console.log("Me como: "+frutas.shift());
+    console.log("Me como: "+frutas.shift()); // elimina el primer elemento del array, devuelve el elemento eleminado
     console.log(frutas);
     console.log("Mi frutera tiene "+frutas.length+" frutas");
 
-    console.log("Me como: "+frutas.splice(1,0, "kiwi", "frutilla")); // posición, cantidad a quitar, valores a a agregar (donde se quitaron)
+    console.log("Me como: "+frutas.splice(1,0, "kiwi", "frutilla")); // posición, cantidad a quitar, valores a a agregar (donde se quitaron) | manupula el array, devuelve el array final
     console.log(frutas);
     console.log("Mi frutera tiene "+frutas.length+" frutas");
 
-    console.log("Que hay desde [1] hasta [5]?: "+frutas.slice(1,5)); // desde, hasta (no inclusive) donde leer
+    console.log("Que hay desde [1] hasta [5]?: "+frutas.slice(1,5)); // desde, hasta (no inclusive) donde leer | lee el array desde/hasta, devuelve un array con los resultados
     console.log(frutas);
     console.log("Mi frutera tiene "+frutas.length+" frutas");
 
     // --------------------------------------------------------------------------- //
 
     // FUNCION SORT
+    // oredena los elementos ascendente
     console.log("Ordeno mis frutas alfabéticamente ascendente:")
     frutas.sort((a,b)=>{orden = a > b ? 1 : a < b ? -1 : 0; return orden});
     console.log(frutas);
-
+    // oredena los elementos descendente
     console.log("Ordeno mis frutas alfabéticamente descendente:")
     frutas.sort((a,b)=>{orden = a < b ? 1 : a > b ? -1 : 0; return orden});
     console.log(frutas);
 
     // FUNCION MAP
+    // Map es un método que recibe una función como parámetro y opcionalmente un valor arbitrario y retorna un NUEVO VECTOR como resultado.
+    // "por cada objeto que haya en un array yo voy a generar un objeto nuevo, y todos esos objetos juntos metidos en un array va a ser el resultado del map"
     let numeros = [1, 61, 3];
     var m = numeros.map( (elemento, indice) => { return {"valor":elemento, "posicion":indice}; });
     console.log(numeros);
@@ -49,21 +52,23 @@
     console.log(m[1].valor);
 
     // FUNCION REDUCE
+    // Reduce es un método que recibe una función y un valor inicial como parámetros y retorna un VALOR como resultado.
+    // "de todos los objetos del array, voy a obtener un solo objeto (los comprimo y retorno un solo objeto) | ejemplo: máximo, mínimo, sumatoria"
     let jugadores = [{"nombre": "juan", "peso": 100}, {"nombre": "ariel", "peso": 180}, {"nombre": "pablo", "peso": 120}];
     console.log(jugadores);
-    let r = jugadores.reduce( (valorAnterior, elemento, indice, vector) => { return valorAnterior + elemento.peso; }, 500 ); 
+    let r = jugadores.reduce( (valorActual/*500*/, elementoActual, indice, vector) => { console.log(valorActual); return valorActual + elementoActual.peso; }, 500/*valorInicial*/); 
     console.log(r);
 
     // FUNCION FILTER
+    // Filter es un método que recibe una función y un valor arbitrario como parámetros y retorna un NUEVO VECTOR como resultado.
+    // "me devuelve un array con los elementos filtrados, la funcion que se le pasa debe retornar un true o false (para descartalo)"
     let jugadores2 = [{"nombre": "juan", "peso": 100}, {"nombre": "ariel", "peso": 180}, {"nombre": "pablo", "peso": 120}];
     console.log(jugadores2);
     //let f = jugadores2.filter( (elemento, indice, vector) => { return elemento.peso >= this; }, 110);
-    //console.log(f);    
-    
+    //console.log(f);
     function peso(elemento, indice, vector) {
         return elemento.peso >= this;
-    } 
-
+    }
     let f = jugadores2.filter(peso, 110);
     console.log(f);
 

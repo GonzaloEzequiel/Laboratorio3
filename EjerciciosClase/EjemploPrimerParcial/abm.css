@@ -1,0 +1,73 @@
+#formDatos {
+    background-color: #d0a465;
+}
+
+#formABM {
+    display: none;
+    background-color: #226160;
+    color: #fdf6eb;
+}
+
+.container-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container-vertical {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    border: #a95f4d dotted 5px;
+}
+
+h2 {
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+table {
+    width: 110%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+th {
+    border: 3px;
+    border-style: solid;
+}
+
+td {
+    border: 3px;
+    border-color: #050505;
+    border-style: double;
+    text-align: center;
+}
+
+#btn_agregar {
+    width: 100%;
+    height: 30px;
+    border-style: none;
+    margin-top: 10px;
+    color: #fdf6eb;
+    background-color: #a95f4d;
+}
+
+.form_label {
+    margin: 8px;
+}
+
+.form_input {
+    margin: 8px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: right;
+    margin-right: 10px;
+    min-width: 100px;
+}

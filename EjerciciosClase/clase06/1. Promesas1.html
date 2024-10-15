@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let a = 10;
+    let b = 5;
+
+    console.log("1. Antes de instanciar la promesa");
+
+    let promesa = new Promise(
+        (exito, fracaso)=>{
+            let suma = a + b;
+            console.log("2. Dentro de la promesa antes del exito");
+            
+            if(suma > 20)         
+                exito("Mayor a 20");
+            else
+                fracaso("Menor a 20");
+
+            console.log("3. Dentro de la promesa despues del exito");
+        }
+    );
+
+    console.log("4. Despues de la promesa antes del then");
+
+    //por fuera consulto el resultado de la promesa
+    promesa.then(
+        (resultado)=>{ console.log("5. Dentro del then. Resultado: " + resultado.toString()); }
+    ).catch(
+        (resultado)=>{ console.log("5. Dentro del catch. Resultado: " + resultado.toString()); }
+    );
+    //el resultado de una promesa es otra promesa ... "Funcion de color"
+
+    console.log("6. Despues de la promesa despues del then");
+
+</script>
+</html>

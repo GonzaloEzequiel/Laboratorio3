@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    
+    <input type="text" id="txtNombre">
+    <input type="button" value="Buscar" onclick="BuscarCarta()"><br>
+
+</body>
+<script>
+
+    function BuscarCarta(){
+        let nombre = document.getElementById("txtNombre").value;
+        var xhttp = new XMLHttpRequest(); // Instancia el objeto
+
+        xhttp.onreadystatechange = function () {        
+            if(xhttp.readyState == 4) {
+
+                let carta = document.createElement("img");
+
+                if(xhttp.status == 200) {
+                    let jsonRespuesta = JSON.parse(xhttp.response);                    
+                    carta.setAttribute("src", jsonRespuesta.image_uris.normal);
+                    
+                } else if(xhttp.status == 404) {
+                    carta.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1LuXVM1Ry2Kn2Cb4dzdHEcm0JMjZD7QDV5w&s");
+                }
+                
+                document.getElementById("body").appendChild(carta); 
+                
+                let p = document.createElement("p").appendChild(document.createTextNode("Texto Después"));
+                document.getElementById("body").appendChild(p); 
+                
+            }            
+
+        };  // Configuro el manejador para cambio de estado
+
+        xhttp.open("GET", `https://api.scryfall.com/cards/named?fuzzy=${nombre}`);
+        xhttp.setRequestHeader('Content-type', 'application/json');
+        xhttp.send(); // Envío la solicitud
+    }
+    
+</script>
+</html>

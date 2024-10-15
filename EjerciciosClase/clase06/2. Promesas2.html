@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let p1 = new Promise(
+        (e, f) => {
+            console.log("inicia p1");
+            setTimeout(
+                () => {e("termino p1")},
+                10000
+            );
+        }
+    );
+
+    let p2 = new Promise(
+        (e, f) => {
+            console.log("inicia p2");
+            setTimeout(
+                () => {e("termino p2")},
+                8000
+            );
+        }
+    );
+
+
+    p1
+    .then(
+        (e)=>{
+            console.log(e); 
+            setTimeout(
+                () => {
+                    console.log("terimino primer then p1"); 
+                    return "Exito then";
+                }, 3000
+            );
+        })        
+    .then(
+        (x)=>{
+            setTimeout(
+                () => {
+                    console.log("termino segunda then p1"); 
+                    return "Exito then";
+                }, 2000
+            );
+        });
+
+
+    p2
+    .then(
+        (e)=>{
+            console.log(e); 
+            setTimeout(
+                () => {
+                    console.log("terimino primer then p2"); 
+                    return "Exito then";
+                }, 6000
+            );
+        })
+    .then(
+        (x)=>{
+            setTimeout(
+                () => {
+                    console.log("termino segunda then p2"); 
+                    return "Exito then";
+                }, 3000
+            );
+        });
+
+    function miProceso() {
+        let p = new Promise((e,f)=>{e("")});
+        p.then((e)=>{"..."})
+        .catch((f)=>{"---"});
+    }
+
+    async function Sumar(a, b) { // el resultado de una funcion asíncrona es una Promesa exitosa
+        return a + b;
+    }
+    //es lo mismo qu decir
+    let p = new Promise(
+        (e,f)=>{e(a+b)}
+    )
+    
+
+</script>
+</html>

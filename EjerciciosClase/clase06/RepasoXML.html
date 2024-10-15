@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let xml = new XMLHttpRequest();
+
+    xml.onreadystatechange = () => {
+
+        if(xml.readyState == 4 /* cuando se resuelve la solicitud */) {
+
+            if(xml.status == 200 /* cuando responde 200 (ok) */) {
+
+            }
+
+        }
+    }
+
+    xml.open("VERBO", "url");
+    xml.setRequestHeader("clave", "valor");
+    xml.send("cuerpo");
+</script>
+</html>

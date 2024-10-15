@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <script>
+
     class Persona {
         nombre;
         apellido;
@@ -16,6 +17,11 @@
             this.apellido = c_apellido;
             this.#edad = c_edad;
         }
+
+        get edadPrivada() {return this.#edad; }
+        set edadPrivada(value) {return this.#edad = value; }
+        
+        miEdad = function() { return this.#edad; }
     }
 
     class Ciudadano extends Persona {
@@ -24,6 +30,19 @@
         constructor(c_nomnbre, c_apellido, c_edad, c_dni) {
             super(c_nomnbre, c_apellido, c_edad);
             this.dni = c_dni;
+        }
+
+        // método corriente
+        MostrarDatos() {
+            console.log(this.#Privada());            
+        }
+        // método privado
+        #Privada() {
+            return "Nombre: "+this.nombre+" Apellido: "+this.apellido+" Edad: "+this.edadPrivada+" DNI: "+this.dni;
+        }
+        // método de clase
+        static SeLLamaGonzalo(ciudadano) {
+            return ciudadano.nombre === "Gonzalo";
         }
     }
 
@@ -39,6 +58,18 @@
     console.log(object1);
     console.log(object1[0]);
     console.log(object1[0].nombre);
+
+    c1.MostrarDatos();
+
+    object2 = JSON.parse('{"nombre":"Profe","apellido":"test","edad":"50","dni":"11111"}');
+    
+    c2 = new Ciudadano(object2.nombre, object2.apellido, object2.edadPrivada, object2.dni);
+    console.log(c2 instanceof Ciudadano);
+    c2.MostrarDatos();
+
+    
+  
+
 
 </script>
 <body>
