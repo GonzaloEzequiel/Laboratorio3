@@ -20,12 +20,18 @@
 <body>
     <div id="header">
         <div id="banner">
+<<<<<<< HEAD
             <h3>ESTO ES UN BANNER</h3>            
                 
             <h5 id="titulo" class="lista">LISTA DE SALUDOS</h5>
 
             <ul display="block" id="lista" class="lista">
                 
+=======
+            ESTO ES UN BANNER
+            <ul display="block" id="lista">
+                LISTA DE SALUDOS
+>>>>>>> b134659d517642a49548e7cee4f4fe164e046211
             </ul>
         </div>
         <div>
@@ -39,26 +45,24 @@
     var manipulable = document.getElementById("lista");
     var botonBackend = document.getElementById("botonFrontend");
     var botonBackend2 = document.getElementById("botonFrontend2");
+    
     var personas = ["Gonzalo", "Florencia", "Lomito", "Menta", "Tuki", "Hernán", "Victoria", "Alfredo", "Lourdes", "Pablo"];
+
 
     botonBackend.addEventListener("click", AgregarLi);
     botonBackend2.addEventListener("click", BorrarSaludos);
     
-    /**
-     * Agrega un item de lista con el texto "Hola Mundo"
-     * 
-     */
     function AgregarLi() {
-
         MostrarSaludos();
-
         manipulable.style.visibility = "visible";
         
         // 1) creo un elemento
         let elemento = document.createElement('li');
 
         // 2) creo un nodo de texto
+
         let texto = document.createTextNode('hola'+' '+personas[Math.floor(Math.random() * personas.length)]);
+
 
         // 3) vinculo el nodo de texto al elemento creado
         elemento.appendChild(texto);
@@ -68,6 +72,7 @@
 
           
     }
+
     
     function BorrarSaludos() {
 
@@ -91,6 +96,7 @@
         tit.style.visibility = "hidden";
     }
     
+
 
 </script>
 </html>
