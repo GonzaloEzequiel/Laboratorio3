@@ -237,31 +237,31 @@ function MostrarABM(persona) {
 
         if(persona instanceof Empleado) {
             frm_tipo.value = "Empleado";
+            lblAtr3.textContent = "Ventas: ";
+            lblAtr4.textContent = "Sueldo: ";
             frm_atr3.value = persona.ventas;
             frm_atr4.value = persona.sueldo;   
         }
         else {
             frm_tipo.value = "Cliente";
+            lblAtr3.textContent = "Compras: ";
+            lblAtr4.textContent = "Telefono: ";
             frm_atr3.value = persona.compras;
             frm_atr4.value = persona.telefono;   
         }
 
         // CASO MODIF USUARIO
-        if(event.currentTarget.id > "modificar") {
-
-            console.log("modificacion" + persona);
+        if(event.currentTarget.id.startsWith("modificar")) {
 
             titulo_operacion.textContent = "Modificar Usuario";
-            btn_aceptar.addEventListener("click", () => { modificarUsuario(persona) });
+            btn_aceptar.addEventListener("click", () => { modificarUsuario(persona); });
     
         }
         // CASO BAJA USUARIO
-        else if(event.currentTarget.id > "eliminar") {
+        else if(event.currentTarget.id.startsWith("eliminar")) {
 
-            console.log("eliminacion" + persona);
-    
             titulo_operacion.textContent = "Eliminar Usuario";
-            btn_aceptar.addEventListener("click", () => { eliminarUsuario(persona) });
+            btn_aceptar.addEventListener("click", () => { eliminarUsuario(persona); });
         } 
     }
 }
@@ -366,6 +366,7 @@ async function modificarUsuario(usuario) {
 
     let length = personas.length;        
     let auxPersonaJson =`{
+                        "id":"${frm_id.value}",
                         "nombre":"${frm_nombre.value}",
                         "apellido":"${frm_apellido.value}",
                         "edad":"${frm_edad.value}",
@@ -378,44 +379,28 @@ async function modificarUsuario(usuario) {
         headers: { 'Content-Type': 'application/json' },
         body: auxPersonaJson,
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
 
-        frm_id.value = data.id;
+        if(response.status == 200) {
 
-        if(frm_tipo.value == "Empleado")
-        {
-            try {
-                let auxEmpleado = new Empleado(frm_id.value, frm_nombre.value, frm_apellido.value, frm_edad.value, frm_atr3.value, frm_atr4.value);
-                personas.push(auxEmpleado);
-            }
-            catch(error) {
-                alert(error);
-            }
-            
-        }
-        else if((frm_tipo.value=="Cliente"))
-        {
-            try {
-                let auxCliente = new Cliente(frm_id.value, frm_nombre.value, frm_apellido.value, frm_edad.value, frm_atr3.value, frm_atr4.value);
-                personas.push(auxCliente);
-            }
-            catch(error) {
-                alert(error);
-            }                   
-        }
+            usuario.nombre = frm_nombre.value;
+            usuario.apellido = frm_apellido.value;
+            usuario.edad = frm_edad.value;
+            usuario[lblAtr3.textContent.slice(0,-2).toLocaleLowerCase()] = frm_atr3.value;
+            usuario[lblAtr4.textContent.slice(0,-2).toLocaleLowerCase()] = frm_atr4.value;
 
-    })
-    .then(() => {
-
-        if(personas.length > length) {
             MostrarDatos(personas);
+            desbloqueaLaPantalla();
         }
-
-        desbloqueaLaPantalla();
+        else {
+            throw new Error(response);
+        }
+        
     })
     .catch(error  => {
-        alert(error);
+        alert("No se pudo modificar el Usuario. " + error);
+
+        MostrarDatos(personas);
         desbloqueaLaPantalla();
     });
 }
@@ -426,26 +411,29 @@ function eliminarUsuario(usuario) {
 
     let promesa = new Promise( (resolve, reject) => {
 
-        fetch("http://localhost/LABO2P_PersonasEmpleadosClientes.php", {
+        let respuesta = fetch("http://localhost/LABO2P_PersonasEmpleadosClientes.php", {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
-            body: usuario.id,
+            body: `{"id":"${usuario.id}"}`,
         })
 
     })
-    .then((resultado) => {
-        if(resultado.ok) {
-            let indice = personas.findIndex( user => user.id == frm_id.value );
-            personas.splice(indice, 1);
-            desbloqueaLaPantalla();
-        }        
+
+    promesa.then(() => {
+
+        let indice = personas.findIndex( user => user.id == frm_id.value );
+        personas.splice(indice, 1);
+
+        MostrarDatos(personas);
+        desbloqueaLaPantalla();
+        
     })
     .catch(error => {
-        alert(error);
-        desbloqueaLaPantalla();
-    })
+        alert("No se pudo eliminar el Usuario. "+ error);
 
-    
+        MostrarDatos(personas);
+        desbloqueaLaPantalla(); 
+    })
 }
 
 window.addEventListener("load", Main);
